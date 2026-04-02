@@ -36,11 +36,13 @@ jobs:
           mkdir build
           cd build
           cmake -DCMAKE_BUILD_TYPE=Release ^
-                -DCMAKE_IGNORE_PATH="C:/ProgramData/chocolatey/bin;C:/vcpkg/bin" ^
                 -DLAF_BACKEND=skia ^
                 -DSKIA_DIR=%GITHUB_WORKSPACE%\deps\skia ^
                 -DSKIA_LIBRARY_DIR=%GITHUB_WORKSPACE%\deps\skia\out\Release-x64 ^
                 -DSKIA_LIBRARY=%GITHUB_WORKSPACE%\deps\skia\out\Release-x64\skia.lib ^
+                -DWEBP_LIBRARIES=%GITHUB_WORKSPACE%\deps\skia\out\Release-x64\libwebp.lib ^
+                -DREGENERATE_INTERFACES=ON ^
+                -DUSE_SHARED_EXT=OFF ^
                 -G Ninja ..
 
       - name: Build Aseprite
