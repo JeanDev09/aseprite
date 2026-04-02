@@ -28,6 +28,11 @@ jobs:
         run: |
           Invoke-WebRequest -Uri "https://github.com/aseprite/skia/releases/download/m102-861e4743af/Skia-Windows-Release-x64.zip" -OutFile skia.zip
           Expand-Archive -Path skia.zip -DestinationPath deps/skia
+
+      - name: Dummy ICU fix
+        run: |
+          mkdir -p deps/skia/third_party/externals/icu/flutter/
+          touch deps/skia/third_party/externals/icu/flutter/icudtl.dat
           
       - name: Configure CMake
         shell: cmd
